@@ -29,6 +29,12 @@ VerifyReview = Callable[[str, int, str, str], bool]
 def parse_open_prs(pulls_json: list, repo: str) -> list:
     out = []
     for pr in pulls_json:
+        # Черновик не готов к ревью по определению: автор ещё не предъявил
+        # работу. Вебхук это уже учитывает и ждёт снятия статуса, а свипер брал
+        # ВСЕ открытые — и ревью уходило на то, что смотреть рано. Отсутствие
+        # поля считаем обычным PR: так отвечают старые записи и часть API.
+        if pr.get("draft"):
+            continue
         number = pr.get("number")
         head_sha = (pr.get("head") or {}).get("sha")
         if number is not None and head_sha:

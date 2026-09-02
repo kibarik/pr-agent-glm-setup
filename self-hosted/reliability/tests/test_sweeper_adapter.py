@@ -24,6 +24,22 @@ class TestParseOpenPrs(unittest.TestCase):
         pulls = [{"number": 7}, {"head": {"sha": "x"}}, {"number": 9, "head": {"sha": "z"}}]
         self.assertEqual(parse_open_prs(pulls, "o/r"), [OpenPR("o/r", 9, "z")])
 
+    def test_skips_drafts(self):
+        """Черновик по определению не готов к ревью: автор его не предъявил.
+
+        Отказ, ради которого написано: контур `poh-issue-agents` научился
+        выкладывать работу СОРВАВШЕГОСЯ прогона разработки черновым PR.
+        Вебхук черновики уже пропускает и ждёт снятия статуса, а свипер брал
+        ВСЕ открытые — и ревью уходило бы на работу, которую контур сам
+        признал негодной.
+        """
+        pulls = [{"number": 1, "head": {"sha": "aaa"}, "draft": False},
+                 {"number": 2, "head": {"sha": "bbb"}, "draft": True},
+                 {"number": 3, "head": {"sha": "ccc"}}]
+        self.assertEqual(parse_open_prs(pulls, "o/r"),
+                         [OpenPR("o/r", 1, "aaa"), OpenPR("o/r", 3, "ccc")],
+                         "черновик пропускаем; отсутствие поля — обычный PR")
+
 
 class TestHasCompletedReview(unittest.TestCase):
     def test_reflects_store_done(self):
