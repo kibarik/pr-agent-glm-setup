@@ -11,9 +11,9 @@ mkdir -p /app/pr_agent/settings
   printf 'api_base = "%s"\n' "${OPENAI_API_BASE:-https://api.z.ai/api/coding/paas/v4}"
   printf '\n[config]\n'
   printf 'git_provider = "github"\n'
-  printf 'model = "%s"\n' "${CONFIG_MODEL:-openai/glm-5}"
-  printf 'model_turbo = "%s"\n' "${CONFIG_MODEL:-openai/glm-5}"
-  printf 'fallback_models = ["%s", "%s"]\n' "${CONFIG_MODEL:-openai/glm-5}" "${CONFIG_MODEL:-openai/glm-5}"
+  printf 'model = "%s"\n' "${CONFIG_MODEL:-openai/glm-4.6}"
+  printf 'model_turbo = "%s"\n' "${CONFIG_MODEL:-openai/glm-4.6}"
+  printf 'fallback_models = ["%s", "%s"]\n' "${CONFIG_MODEL:-openai/glm-4.6}" "${CONFIG_MODEL:-openai/glm-4.6}"
   printf 'custom_model_max_tokens = %s\n' "${CONFIG_MAX_TOKENS:-128000}"
   printf 'ai_timeout = %s\n' "${CONFIG_AI_TIMEOUT:-90}"
   printf '\n[github]\n'

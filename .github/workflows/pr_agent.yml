@@ -26,9 +26,9 @@ jobs:
           OPENAI_KEY: ${{ secrets.ZAI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_BASE: "https://api.z.ai/api/coding/paas/v4"
-          config.model: "openai/glm-5"
-          config.model_turbo: "openai/glm-5"
-          config.fallback_models: '["openai/glm-5"]'
+          config.model: "${{ vars.PR_AGENT_MODEL || 'openai/glm-4.6' }}"
+          config.model_turbo: "${{ vars.PR_AGENT_MODEL || 'openai/glm-4.6' }}"
+          config.fallback_models: "[\"${{ vars.PR_AGENT_MODEL || 'openai/glm-4.6' }}\"]"
           config.custom_model_max_tokens: "128000"
           github_action_config.auto_describe: "true"
           github_action_config.auto_review: "false"
@@ -50,9 +50,9 @@ jobs:
           OPENAI_KEY: ${{ secrets.ZAI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_BASE: "https://api.z.ai/api/coding/paas/v4"
-          config.model: "openai/glm-5"
-          config.model_turbo: "openai/glm-5"
-          config.fallback_models: '["openai/glm-5"]'
+          config.model: "${{ vars.PR_AGENT_MODEL || 'openai/glm-4.6' }}"
+          config.model_turbo: "${{ vars.PR_AGENT_MODEL || 'openai/glm-4.6' }}"
+          config.fallback_models: "[\"${{ vars.PR_AGENT_MODEL || 'openai/glm-4.6' }}\"]"
           config.custom_model_max_tokens: "128000"
           github_action_config.auto_describe: "false"
           github_action_config.auto_review: "true"
@@ -74,9 +74,9 @@ jobs:
           OPENAI_KEY: ${{ secrets.ZAI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_BASE: "https://api.z.ai/api/coding/paas/v4"
-          config.model: "openai/glm-5"
-          config.model_turbo: "openai/glm-5"
-          config.fallback_models: '["openai/glm-5"]'
+          config.model: "${{ vars.PR_AGENT_MODEL || 'openai/glm-4.6' }}"
+          config.model_turbo: "${{ vars.PR_AGENT_MODEL || 'openai/glm-4.6' }}"
+          config.fallback_models: "[\"${{ vars.PR_AGENT_MODEL || 'openai/glm-4.6' }}\"]"
           config.custom_model_max_tokens: "128000"
           github_action_config.auto_describe: "false"
           github_action_config.auto_review: "false"

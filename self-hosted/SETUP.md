@@ -97,7 +97,7 @@ HTTP only** (its HTTPS is a self-signed `TRAEFIK DEFAULT CERT`). So:
 | `GITHUB_WEBHOOK_SECRET` | ✅ | — |
 | `GITHUB_PRIVATE_KEY_B64` | ✅ | — |
 | `OPENAI_API_BASE` | | `https://api.z.ai/api/coding/paas/v4` |
-| `CONFIG_MODEL` | | `openai/glm-5` |
+| `CONFIG_MODEL` | | `openai/glm-4.6` |
 | `CONFIG_MAX_TOKENS` | | `128000` |
 | `SENTRY_DSN` | | — (пусто → Sentry выключен) |
 | `SENTRY_ENVIRONMENT` | | `production` |
